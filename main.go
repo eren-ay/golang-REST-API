@@ -7,5 +7,5 @@ import (
 
 func main() {
 	utils.CreateServer(3000)
-	database.ConnectionDB()
+	database.ConnectDB()
 }
