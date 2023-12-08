@@ -7,11 +7,14 @@ import (
 
 func ShowRoutes(app *fiber.App) {
 	// Create show
-	app.Post("/show", show.Create)
+	app.Get("/show", show.Create)
 
-	// TODO List All shows
-	//app.Get("/shows", show.All)
+	// TODO List All show id
+	app.Get("/shows", show.AllId)
 
+	app.Get("/", func(c *fiber.Ctx) error {
+		return c.SendString("Hello, Fiber!")
+	})
 	// TODO Delete chosen index show
 
 	// TODO List chosen index

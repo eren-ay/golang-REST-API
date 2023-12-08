@@ -1,8 +1,8 @@
 package models
 
 type Show struct {
-	ID    string
-	Title string `gorm:"type:text"`
+	ID    string `bson:"id"`
+	Title string `bson:"title"`
 }
 
 /*
