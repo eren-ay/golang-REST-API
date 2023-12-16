@@ -33,8 +33,8 @@ func connectDB() *mongo.Client {
 var DB *mongo.Client = connectDB()
 
 // getting database collections
-func GetCollection(client *mongo.Client, collectionName string) *mongo.Collection {
-	collection := client.Database("Show").Collection(collectionName)
+func GetCollection(client *mongo.Client, databaseName string, collectionName string) *mongo.Collection {
+	collection := client.Database(databaseName).Collection(collectionName)
 	return collection
 }
 
@@ -47,5 +47,4 @@ func InsertCollection(client *mongo.Client, databaseName string, collectionName 
 	}
 	_ = insertManyResult
 	//fmt.Println("Inserted multiple documents: ", insertManyResult.InsertedIDs)
-
 }

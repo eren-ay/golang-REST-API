@@ -6,18 +6,22 @@ import (
 )
 
 func ShowRoutes(app *fiber.App) {
-	// Create show
-	app.Get("/show", show.Create)
-
-	// TODO List All show id
-	app.Get("/shows", show.AllId)
-
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("Hello, Fiber!")
 	})
-	// TODO Delete chosen index show
+
+	// Create show
+	//app.Post("/show", show.Create)
+
+	// TODO List All show id
+	app.Get("/show/all", show.AllId)
 
 	// TODO List chosen index
+	app.Get("/show/:id")
+
+	// TODO Delete chosen index show
+	app.Delete("/show/:id")
 
 	// TODO Update chosen index
+	app.Post("/show/:id")
 }

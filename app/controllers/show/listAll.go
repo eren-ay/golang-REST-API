@@ -11,7 +11,7 @@ import (
 )
 
 func AllId(ctx *fiber.Ctx) error {
-	showCollection := database.GetCollection(database.DB, "Movie")
+	showCollection := database.GetCollection(database.DB, "Show", "Movie")
 	//filter := bson.D{{Key: "title", Value: "eren"}}
 	//bson.D{} = no filter
 	filter := bson.D{}
@@ -23,7 +23,7 @@ func AllId(ctx *fiber.Ctx) error {
 }
 
 func getShows(coll *mongo.Collection, filter bson.D) ([]models.Show, error) {
-	cursor, err := coll.Find(context.TODO(), bson.D{})
+	cursor, err := coll.Find(context.TODO(), filter)
 	if err != nil {
 		return nil, err
 	}
