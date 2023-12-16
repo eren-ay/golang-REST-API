@@ -22,6 +22,17 @@ func AllId(ctx *fiber.Ctx) error {
 	return ctx.Status(200).JSON(array)
 }
 
+func GetShowById(ctx *fiber.Ctx) error {
+	showCollection := database.GetCollection(database.DB, "Show", "Movie")
+	filter := bson.D{{Key: "title", Value: ctx.Params("id")}}
+
+	array, err := getShows(showCollection, filter)
+	if err != nil {
+		return err
+	}
+	return ctx.Status(200).JSON(array)
+}
+
 func getShows(coll *mongo.Collection, filter bson.D) ([]models.Show, error) {
 	cursor, err := coll.Find(context.TODO(), filter)
 	if err != nil {

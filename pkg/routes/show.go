@@ -17,11 +17,11 @@ func ShowRoutes(app *fiber.App) {
 	app.Get("/show/all", show.AllId)
 
 	// TODO List chosen index
-	app.Get("/show/:id")
+	app.Get("/show/:id", show.GetShowById)
 
 	// TODO Delete chosen index show
-	app.Delete("/show/:id")
+	//app.Delete("/show/:id")
 
 	// TODO Update chosen index
-	app.Post("/show/:id")
+	//app.Post("/show/:id")
 }
